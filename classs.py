@@ -2,9 +2,13 @@ class Animal:
 
     def __init__(self, name, volume_of_food, age):
         self.name = name
-        self.__volume_of_food = volume_of_food
+        self._volume_of_food = volume_of_food
         self.age = age
         self.sound = ''
+        self._view = ''
+        self._biome = ''
+        self._square = '10 м**2'
+        self._predator_or_herbivore = ''
 
     def play(self):
         print(self.name, ': Я поиграл')
@@ -17,7 +21,23 @@ class Animal:
 
     @property
     def volume_of_food(self):
-        return self.__volume_of_food
+        return self._volume_of_food
+
+    @property
+    def view(self):
+        return self._view
+
+    @property
+    def biome(self):
+        return self._biome
+
+    @property
+    def square(self):
+        return self._square
+
+    @property
+    def predator_or_herbivore(self):
+        return self._predator_or_herbivore
 
 
 class Slon(Animal):
@@ -25,6 +45,9 @@ class Slon(Animal):
     def __init__(self, name, volume_of_food, age):
         super().__init__(name, volume_of_food, age)
         self.sound = 'УУХХЕРРРРРРРРРРРРРРРРРР'
+        self._view = 'Слон'
+        self._biome = 'Пустыня'
+        self._predator_or_herbivore = 'Травоядное'
 
 
 class Tiger(Animal):
@@ -32,6 +55,9 @@ class Tiger(Animal):
     def __init__(self, name, volume_of_food, age):
         super().__init__(name, volume_of_food, age)
         self.sound = 'РРРРРР'
+        self._view = 'Тигр'
+        self._biome = 'Тропики'
+        self._predator_or_herbivore = 'Хищник'
 
 
 class Pinguin(Animal):
@@ -39,4 +65,6 @@ class Pinguin(Animal):
     def __init__(self, name, volume_of_food, age):
         super().__init__(name, volume_of_food, age)
         self.sound = 'Хрю'
-
+        self._view = 'Пингвин'
+        self._biome = 'Тундра'
+        self._predator_or_herbivore = 'Хищник'
