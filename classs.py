@@ -7,7 +7,7 @@ class Animal:
         self.sound = ''
         self._view = ''
         self._biome = ''
-        self._square = '10 м**2'
+        self._square = ''
         self._predator_or_herbivore = ''
 
     def play(self):
@@ -48,6 +48,7 @@ class Slon(Animal):
         self._view = 'Слон'
         self._biome = 'Пустыня'
         self._predator_or_herbivore = 'Травоядное'
+        self._square = '15 м**2'
 
 
 class Tiger(Animal):
@@ -58,6 +59,7 @@ class Tiger(Animal):
         self._view = 'Тигр'
         self._biome = 'Тропики'
         self._predator_or_herbivore = 'Хищник'
+        self._square = '10 м**2'
 
 
 class Pinguin(Animal):
@@ -68,3 +70,4 @@ class Pinguin(Animal):
         self._view = 'Пингвин'
         self._biome = 'Тундра'
         self._predator_or_herbivore = 'Хищник'
+        self._square = '5 м**2'
