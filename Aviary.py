@@ -1,4 +1,4 @@
-from classs import *
+from Animal import *
 
 
 class Aviary:
