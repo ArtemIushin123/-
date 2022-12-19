@@ -8,7 +8,7 @@ class Animal:
         self._view = ''
         self._biome = ''
         self._square = ''
-        self._predator_or_herbivore = ''
+        self._predator = bool
 
     def play(self):
         print(self.name, ': Я поиграл')
@@ -36,18 +36,18 @@ class Animal:
         return self._square
 
     @property
-    def predator_or_herbivore(self):
-        return self._predator_or_herbivore
+    def predator(self):
+        return self._predator
 
 
-class Slon(Animal):
+class Elefant(Animal):
 
     def __init__(self, name, volume_of_food, age):
         super().__init__(name, volume_of_food, age)
         self.sound = 'УУХХЕРРРРРРРРРРРРРРРРРР'
         self._view = 'Слон'
         self._biome = 'Пустыня'
-        self._predator_or_herbivore = 'Травоядное'
+        self._predator = 'Травоядное'
         self._square = '15 м**2'
 
 
@@ -58,7 +58,7 @@ class Tiger(Animal):
         self.sound = 'РРРРРР'
         self._view = 'Тигр'
         self._biome = 'Тропики'
-        self._predator_or_herbivore = 'Хищник'
+        self._predator = 'Хищник'
         self._square = '10 м**2'
 
 
@@ -69,5 +69,5 @@ class Pinguin(Animal):
         self.sound = 'Хрю'
         self._view = 'Пингвин'
         self._biome = 'Тундра'
-        self._predator_or_herbivore = 'Хищник'
+        self._predator = 'Хищник'
         self._square = '5 м**2'
