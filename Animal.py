@@ -97,17 +97,6 @@ class Dog(Animal):
         self._area = 3
 
 
-class Sheep(Animal):
-
-    def __init__(self, name, volume_of_food, food, age):
-        super().__init__(name, volume_of_food, food, age)
-        self.sound = 'БЕЕЕЕ'
-        self._animal_type = 'Овца'
-        self._biome = 'Горы'
-        self._predator = False
-        self._area = 8
-
-
 class Wolf(Animal):
 
     def __init__(self, name, volume_of_food, food, age):
@@ -128,17 +117,6 @@ class Giraffe(Animal):
         self._biome = 'Пустыня'
         self._predator = False
         self._area = 20
-
-
-class Lion(Animal):
-
-    def __init__(self, name, volume_of_food, food, age):
-        super().__init__(name, volume_of_food, food, age)
-        self.sound = 'РРРРРРР'
-        self._animal_type = 'Лев'
-        self._biome = 'Саванна'
-        self._predator = True
-        self._area = 12
 
 
 class Goat(Animal):
