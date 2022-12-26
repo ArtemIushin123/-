@@ -7,6 +7,7 @@ class Aviary:
         self.biome = biome
         self.area = area
         self.animals = []
+        self._free_size = ''
         self.predator = bool
         self.predator_type = ''
 
@@ -27,6 +28,22 @@ class Aviary:
 
     def delete(self, name):
         self.animals.remove(name)
-        print(name.animal_type, name.name, 'удален из ', self.name)
+        print(name.animal_type, name.name, 'удален из', self.name, 'из-за неуплаты квартплаты')
+
+    def sound_animal(self):
+        for i in self.animals:
+            i.sound_animal()
+
+    def delete_all(self):
+        self.animals.clear()
+        print('Все животные из вольера', self.name, 'были выселены из-за неуплаты квартплаты')
+
+    @property
+    def free_size(self):
+        return self._free_size
+
+
+
+
 
 
