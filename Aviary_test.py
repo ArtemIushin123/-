@@ -7,7 +7,7 @@ class Aviary_test(unittest.TestCase):
     def setUp(self):
         self.Aviary = Aviary
 
-    def test_add_no(self):
+    def test_no_add(self):
         Manny = Giraffe('Мэнни', 3, 20)
         W = Aviary('Травоядные', 'Пустыня', 10)
         W.add(Manny)
@@ -25,14 +25,23 @@ class Aviary_test(unittest.TestCase):
         actual = V.animals
         self.assertEqual(expected, actual)
 
-    def test_add_giraffe_in_ravnina(self):
+    def test_add_herbivore_and_predator(self):
+        Ksenia = Mouse('Мышь', 5, 20)
+        Simba = Tiger('Симба', 5, 5)
+        V = Aviary('Tigers', 'Равнина', 100)
+        V.add(Ksenia)
+        V.add(Simba)
+        expected = [Ksenia]
+        actual = V.animals
+        self.assertEqual(expected, actual)
+
+    def test_add_giraffe_in_plain(self):
         Manny = Giraffe('Мэнни', 3, 20)
         W = Aviary('Травоядные', 'Равнина', 100)
         W.add(Manny)
         expected = []
         actual = W.animals
         self.assertEqual(expected, actual)
-
 
     def test_add_herbivore_and_herbivore(self):
         Manny = Giraffe('Мэнни', 3, 20)
@@ -47,9 +56,11 @@ class Aviary_test(unittest.TestCase):
     def test_add_predator_and_predator(self):
         Simba = Tiger('Симба', 5, 5)
         Slava = Tiger('Слава', 10, 20)
-        V = Aviary('Tigers', 'Равнина', 100)
+        Bosia = Tiger('Бося', 10, 15)
+        V = Aviary('Tigers', 'Равнина', 25)
         V.add(Simba)
         V.add(Slava)
+        V.add(Bosia)
         expected = [Simba, Slava]
         actual = V.animals
         self.assertEqual(expected, actual)

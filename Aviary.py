@@ -8,27 +8,27 @@ class Aviary:
         self.predator_type = ''
         self.predator = bool
 
-    def add(self, Animal):
-        if len(self.animals) == 0 and Animal.area <= self._free_area and self.biome == Animal.biome:
-            self.animals.append(Animal)
-            self._free_area -= Animal.area
-            print(Animal.animal_type, Animal.name, 'подселился в вольер', self.name)
-        elif len(self.animals) != 0 and Animal.area <= self._free_area and Animal.predator == False:
-            if self.biome == Animal.biome:
-                self.animals.append(Animal)
-                self._free_area -= Animal.area
-                print(Animal.animal_type, Animal.name, 'подселился в вольер', self.name)
+    def add(self, animal):
+        if len(self.animals) == 0 and animal.area <= self._free_area and self.biome == animal.biome:
+            self.animals.append(animal)
+            self._free_area -= animal.area
+            print(animal.animal_type, animal.name, 'подселился в вольер', self.name)
+        elif len(self.animals) != 0 and animal.area <= self._free_area and animal.predator == False:
+            if self.biome == animal.biome:
+                self.animals.append(animal)
+                self._free_area -= animal.area
+                print(animal.animal_type, animal.name, 'подселился в вольер', self.name)
             else:
-                print('Нельзя подселить', Animal.animal_type, Animal.name, 'в вольер', self.name)
-        elif len(self.animals) != 0 and Animal.area <= self._free_area and Animal.predator == True:
-            if self.predator_type != Animal.animal_type and self.biome == Animal.biome:
-                self.animals.append(Animal)
-                self._free_area -= Animal.area
-                print(Animal.animal_type, Animal.name, 'подселился в вольер', self.name)
+                print('Нельзя подселить', animal.animal_type, animal.name, 'в вольер', self.name)
+        elif len(self.animals) != 0 and animal.area <= self._free_area and animal.predator == True:
+            if self.predator_type == animal.animal_type and self.biome == animal.biome:
+                self.animals.append(animal)
+                self._free_area -= animal.area
+                print(animal.animal_type, animal.name, 'подселился в вольер', self.name)
             else:
-                print('Нельзя подселить', Animal.animal_type, Animal.name, 'в вольер', self.name)
+                print('Нельзя подселить', animal.animal_type, animal.name, 'в вольер', self.name)
         else:
-            print('Нельзя подселить', Animal.animal_type, Animal.name, 'в вольер', self.name)
+            print('Нельзя подселить', animal.animal_type, animal.name, 'в вольер', self.name)
 
     def feed(self, value, food):
         for i in self.animals:
