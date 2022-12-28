@@ -7,11 +7,11 @@ class Aviary_test(unittest.TestCase):
     def setUp(self):
         self.Aviary = Aviary
 
-    def test_add(self):
+    def test_add_no(self):
         Manny = Giraffe('Мэнни', 3, 20)
-        W = Aviary('Травоядные', 'Пустыня', 100)
+        W = Aviary('Травоядные', 'Пустыня', 10)
         W.add(Manny)
-        expected = [Manny]
+        expected = []
         actual = W.animals
         self.assertEqual(expected, actual)
 
@@ -24,6 +24,15 @@ class Aviary_test(unittest.TestCase):
         expected = [Simba]
         actual = V.animals
         self.assertEqual(expected, actual)
+
+    def test_add_giraffe_in_ravnina(self):
+        Manny = Giraffe('Мэнни', 3, 20)
+        W = Aviary('Травоядные', 'Равнина', 100)
+        W.add(Manny)
+        expected = []
+        actual = W.animals
+        self.assertEqual(expected, actual)
+
 
     def test_add_herbivore_and_herbivore(self):
         Manny = Giraffe('Мэнни', 3, 20)
