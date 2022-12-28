@@ -8,7 +8,7 @@ class Animal:
         self.sound = ''
         self._animal_type = ''
         self._biome = ''
-        self._stomach_volume = 0
+        self._satiety = 0
         self._area = ''
         self._predator = bool
         self.animal_is_full = bool
@@ -20,12 +20,15 @@ class Animal:
         print(self.name, ':', self.sound)
 
     def eat(self, value, food):
-        if self._stomach_volume + value >= self._volume_of_food and self._food:
+        if self._satiety + value == self._volume_of_food and food in self._food:
             print(self.name, ': Я наелся')
             self.animal_is_full = True
+        elif self._satiety + value > self._volume_of_food and food in self._food:
+            print(self.name, ': Я объелся, у меня осталась', self._satiety + value - self._volume_of_food, self._food)
+            self.animal_is_full = True
         elif food in self._food:
-            print(self.name, ': Я не наелся')
-            self._stomach_volume += value
+            print(self.name, ': Я не наелся, дай мне еще', self._volume_of_food - (self._satiety + value), self._food)
+            self._satiety += value
         else:
             print(self.name, ': Шо ты мне дал, я такого не ем')
 
@@ -50,8 +53,8 @@ class Animal:
         return self._predator
 
     @property
-    def stomach_volume(self):
-        return self._stomach_volume
+    def satiety(self):
+        return self._satiety
 
     @property
     def area(self):

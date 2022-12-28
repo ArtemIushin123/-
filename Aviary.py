@@ -26,9 +26,13 @@ class Aviary:
         else:
             print('Нельзя подселить', Animal.animal_type, Animal.name, 'в вольер', self.name)
 
+    def feed(self, value, food):
+        for i in self.animals:
+            i.eat(value, food)
+
     def delete(self, name):
         self.animals.remove(name)
-        print(name.animal_type, name.name, 'удален из', self.name, 'из-за неуплаты квартплаты')
+        print(name.animal_type, name.name, 'удален из', self.name)
 
     def sound_animal(self):
         for i in self.animals:
@@ -41,9 +45,3 @@ class Aviary:
     @property
     def free_size(self):
         return self._free_size
-
-
-
-
-
-
