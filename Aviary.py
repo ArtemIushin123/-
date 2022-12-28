@@ -9,7 +9,7 @@ class Aviary:
         self.predator = bool
 
     def add(self, Animal):
-        if len(self.animals) == 0:
+        if len(self.animals) == 0 and Animal.area <= self._free_area:
             self.animals.append(Animal)
             self._free_area -= Animal.area
             print(Animal.animal_type, Animal.name, 'подселился в вольер', self.name)

@@ -22,15 +22,19 @@ class Animal:
     def eat(self, value, food):
         if self._satiety + value == self._volume_of_food and food in self._food:
             print(self.name, ': Я наелся')
+            self._satiety += value
             self.animal_is_full = True
         elif self._satiety + value > self._volume_of_food and food in self._food:
             print(self.name, ': Я объелся, у меня осталась', self._satiety + value - self._volume_of_food, self._food)
+            self._satiety += value
             self.animal_is_full = True
         elif food in self._food:
             print(self.name, ': Я не наелся, дай мне еще', self._volume_of_food - value, self._food)
             self._satiety += value
+            self.animal_is_full = False
         else:
             print(self.name, ': Шо ты мне дал, я такого не ем')
+            self.animal_is_full = False
 
     @property
     def volume_of_food(self):
