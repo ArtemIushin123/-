@@ -1,28 +1,32 @@
-from Animal import *
-
-
 class Aviary:
     def __init__(self, name, biome, area):
         self.name = name
         self.biome = biome
         self.area = area
         self.animals = []
-        self._free_size = ''
-        self.predator = bool
+        self._free_area = area
         self.predator_type = ''
+        self.predator = bool
 
-    def add(self, Animal: Animal):
-        if len(self.animals) == 0 and Animal.predator:
-            self.predator = True
-            self.predator_type = Animal.animal_type
+    def add(self, Animal):
+        if len(self.animals) == 0:
+            self.animals.append(Animal)
+            self._free_area -= Animal.area
             print(Animal.animal_type, Animal.name, 'подселился в вольер', self.name)
-        if Animal.predator == self.predator and Animal.biome == self.biome:
-            if Animal.predator and Animal.animal_type == self.predator_type:
+        elif len(self.animals) != 0 and Animal.area <= self._free_area and Animal.predator == False:
+            if self.biome == Animal.biome:
                 self.animals.append(Animal)
-            elif Animal.predator:
-                print('Нельзя подселить', Animal.animal_type, Animal.name, 'в вольер', self.name)
+                self._free_area -= Animal.area
+                print(Animal.animal_type, Animal.name, 'подселился в вольер', self.name)
             else:
+                print('Нельзя подселить', Animal.animal_type, Animal.name, 'в вольер', self.name)
+        elif len(self.animals) != 0 and Animal.area <= self._free_area and Animal.predator == True:
+            if self.predator_type != Animal.animal_type and self.biome == Animal.biome:
                 self.animals.append(Animal)
+                self._free_area -= Animal.area
+                print(Animal.animal_type, Animal.name, 'подселился в вольер', self.name)
+            else:
+                print('Нельзя подселить', Animal.animal_type, Animal.name, 'в вольер', self.name)
         else:
             print('Нельзя подселить', Animal.animal_type, Animal.name, 'в вольер', self.name)
 
@@ -44,4 +48,4 @@ class Aviary:
 
     @property
     def free_size(self):
-        return self._free_size
+        return self._free_area
