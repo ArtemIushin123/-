@@ -5,30 +5,20 @@ class Aviary:
         self.area = area
         self.animals = []
         self._free_area = area
-        self.predator_type = ''
-        self.predator = bool
 
     def add(self, animal):
-        if len(self.animals) == 0 and animal.area <= self._free_area and self.biome == animal.biome:
-            self.animals.append(animal)
-            self._free_area -= animal.area
-            print(animal.animal_type, animal.name, 'подселился в вольер', self.name)
-        elif len(self.animals) != 0 and animal.area <= self._free_area and animal.predator == False:
-            if self.biome == animal.biome:
-                self.animals.append(animal)
-                self._free_area -= animal.area
-                print(animal.animal_type, animal.name, 'подселился в вольер', self.name)
-            else:
-                print('Нельзя подселить', animal.animal_type, animal.name, 'в вольер', self.name)
-        elif len(self.animals) != 0 and animal.area <= self._free_area and animal.predator == True:
-            if self.predator_type == animal.animal_type and self.biome == animal.biome:
-                self.animals.append(animal)
-                self._free_area -= animal.area
-                print(animal.animal_type, animal.name, 'подселился в вольер', self.name)
-            else:
-                print('Нельзя подселить', animal.animal_type, animal.name, 'в вольер', self.name)
+        if self.biome != animal.biome:
+            print('Нельзя подселить', animal.animal_type, animal.name, 'в вольер', self.name, '- не совпадает биом.')
+        elif animal.area > self._free_area:
+            print('Нельзя подселить', animal.animal_type, animal.name, 'в вольер', self.name, '- нет места.')
         else:
-            print('Нельзя подселить', animal.animal_type, animal.name, 'в вольер', self.name)
+            has_predators_in_aviary = any(x.predator for x in self.animals)
+            if len(self.animals) == 0 or \
+                    not has_predators_in_aviary and not animal.predator or \
+                    has_predators_in_aviary and animal.predator:
+                self.animals.append(animal)
+                self._free_area -= animal.area
+                print(animal.animal_type, animal.name, 'подселился в вольер', self.name)
 
     def feed(self, value, food):
         for i in self.animals:
