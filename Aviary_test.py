@@ -28,7 +28,7 @@ class Aviary_test(unittest.TestCase):
     def test_add_herbivore_and_predator(self):
         Ksenia = Mouse('Мышь', 5, 20)
         Simba = Tiger('Симба', 5, 5)
-        V = Aviary('Tigers', 'Равнина', 100)
+        V = Aviary('Травоядныe', 'Равнина', 100)
         V.add(Ksenia)
         V.add(Simba)
         expected = [Ksenia]
